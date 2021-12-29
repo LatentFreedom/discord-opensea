@@ -51,81 +51,81 @@ const setCollection = (collection, stats) => {
 }
 
 const styleHelpMessage = () => {
-    const embed = new MessageEmbed().setTitle('Command Help');
-    embed.setDescription('The following are the available opensea info commands. If you want to see all the stats together use **/stat**')
-    embed.addFields(
-        { name: '/stats', value: 'Show stats' },
-        { name: '/supply', value: 'Show total supply' },
-        { name: '/floor', value: 'Show floor price' },
-        { name: '/owners', value: 'Show total owners' },
-    );
+    const embed = new MessageEmbed().setTitle('Command Help')
+        .setDescription('The following are the available opensea info commands. If you want to see all the stats together use **/stat**')
+        .addFields(
+            { name: '/stats', value: 'Show stats' },
+            { name: '/supply', value: 'Show total supply' },
+            { name: '/floor', value: 'Show floor price' },
+            { name: '/owners', value: 'Show total owners' },
+        );
     return {embeds: [embed]};   
 }
 
 const styleStatsMessage = (collection,stats) => {
     s = stats.stats;
-    const embed = new MessageEmbed().setTitle(`${collection} Stats`);
-    embed.addFields(
-        { name: 'Market Cap', value: String(s.market_cap.toFixed(2)), inline: true },
-        { name: 'Floor', value: String(s.floor_price.toFixed(2)), inline: true },
-        { name: 'Volume', value: String(s.total_volume.toFixed(2)), inline: true },
-        { name: 'Sales', value: String(s.total_sales.toFixed(2)), inline: true },
-        { name: 'Supply', value: String(s.total_supply.toFixed(2)), inline: true },
-        { name: 'Count', value: String(s.count.toFixed(2)), inline: true },
-        { name: 'Owners', value: String(s.num_owners.toFixed(2)), inline: true },
-        { name: 'Average Price', value: String(s.average_price.toFixed(2)), inline: true },
-        { name: 'Reports', value: String(s.num_reports.toFixed(2)), inline: true },
+    const embed = new MessageEmbed().setTitle(`${collection} Stats`)
+        .addFields(
+            { name: 'Market Cap', value: String(s.market_cap.toFixed(2)), inline: true },
+            { name: 'Floor', value: String(s.floor_price.toFixed(2)), inline: true },
+            { name: 'Volume', value: String(s.total_volume.toFixed(2)), inline: true },
+            { name: 'Sales', value: String(s.total_sales.toFixed(2)), inline: true },
+            { name: 'Supply', value: String(s.total_supply.toFixed(2)), inline: true },
+            { name: 'Count', value: String(s.count.toFixed(2)), inline: true },
+            { name: 'Owners', value: String(s.num_owners.toFixed(2)), inline: true },
+            { name: 'Average Price', value: String(s.average_price.toFixed(2)), inline: true },
+            { name: 'Reports', value: String(s.num_reports.toFixed(2)), inline: true },
 
-        { name: '\u200B', value: '\u200B' },
+            { name: '\u200B', value: '\u200B' },
 
-        { name: '1 Day', value: '\u200B', inline: true },
-        { name: '7 Day', value: '\u200B', inline: true },
-        { name: '30 Day', value: '\u200B', inline: true },        
+            { name: '1 Day', value: '\u200B', inline: true },
+            { name: '7 Day', value: '\u200B', inline: true },
+            { name: '30 Day', value: '\u200B', inline: true },        
 
-        { name: 'Volume', value: String(s.one_day_volume.toFixed(2)), inline: true },
-        { name: '\u200B', value: String(s.seven_day_volume.toFixed(2)), inline: true },
-        { name: '\u200B', value: String(s.thirty_day_volume.toFixed(2)), inline: true },
+            { name: 'Volume', value: String(s.one_day_volume.toFixed(2)), inline: true },
+            { name: '\u200B', value: String(s.seven_day_volume.toFixed(2)), inline: true },
+            { name: '\u200B', value: String(s.thirty_day_volume.toFixed(2)), inline: true },
 
-        { name: 'Change', value: String(s.one_day_change.toFixed(2)), inline: true },
-        { name: '\u200B', value: String(s.seven_day_change.toFixed(2)), inline: true },
-        { name: '\u200B', value: String(s.thirty_day_change.toFixed(2)), inline: true },
+            { name: 'Change', value: String(s.one_day_change.toFixed(2)), inline: true },
+            { name: '\u200B', value: String(s.seven_day_change.toFixed(2)), inline: true },
+            { name: '\u200B', value: String(s.thirty_day_change.toFixed(2)), inline: true },
 
-        { name: 'Sales', value: String(s.one_day_sales.toFixed(2)), inline: true },
-        { name: '\u200B', value: String(s.seven_day_sales.toFixed(2)), inline: true },
-        { name: '\u200B', value: String(s.thirty_day_sales.toFixed(2)), inline: true },
+            { name: 'Sales', value: String(s.one_day_sales.toFixed(2)), inline: true },
+            { name: '\u200B', value: String(s.seven_day_sales.toFixed(2)), inline: true },
+            { name: '\u200B', value: String(s.thirty_day_sales.toFixed(2)), inline: true },
 
-        { name: 'Average Price', value: String(s.one_day_average_price.toFixed(2)), inline: true },
-        { name: '\u200B', value: String(s.seven_day_average_price.toFixed(2)), inline: true },
-        { name: '\u200B', value: String(s.thirty_day_average_price.toFixed(2)), inline: true },
+            { name: 'Average Price', value: String(s.one_day_average_price.toFixed(2)), inline: true },
+            { name: '\u200B', value: String(s.seven_day_average_price.toFixed(2)), inline: true },
+            { name: '\u200B', value: String(s.thirty_day_average_price.toFixed(2)), inline: true },
 
-        { name: '\u200B', value: '\u200B' },
+            { name: '\u200B', value: '\u200B' },
 
-    );
-    embed.setTimestamp();
+        )
+        .setTimestamp();
     return {embeds: [embed]}; 
 }
 
 const styleSupplyMessage = (collection,stats) => {
-    const embed = new MessageEmbed().setTitle(`${collection} Supply`);
-    embed.setDescription(`Total supply is **${stats.stats.total_supply}**`);
+    const embed = new MessageEmbed().setTitle(`${collection} Supply`)
+        .setDescription(`Total supply is **${stats.stats.total_supply}**`);
     return {embeds: [embed]}; 
 }
 
 const styleFloorMessage = (collection,stats) => {
-    const embed = new MessageEmbed().setTitle(`${collection} Floor Price`);
-    embed.setDescription(`Current floor is **${stats.stats.floor_price}**`);
+    const embed = new MessageEmbed().setTitle(`${collection} Floor Price`)
+        .setDescription(`Current floor is **${stats.stats.floor_price}**`);
     return {embeds: [embed]}; 
 }
 
 const styleOwnersMessage = (collection,stats) => {
-    const embed = new MessageEmbed().setTitle(`${collection} Owners`);
-    embed.setDescription(`Total owners is **${stats.stats.num_owners}**`);
+    const embed = new MessageEmbed().setTitle(`${collection} Owners`)
+        .setDescription(`Total owners is **${stats.stats.num_owners}**`);
     return {embeds: [embed]}; 
 }
 
 const styleBadCollectionMessage = (collection) => {
-    const embed = new MessageEmbed().setTitle(`${collection} Not Found`);
-    embed.setDescription(`**Unknown collection**. Check the url value for the desired collection on opensea. Example url: **https://opensea.io/collection/neotokyo-outer-identities**`);
+    const embed = new MessageEmbed().setTitle(`${collection} Not Found`)
+        .setDescription(`**Unknown collection**. Check the url value for the desired collection on opensea. Example url: **https://opensea.io/collection/neotokyo-outer-identities**`);
     return {embeds: [embed]};
 }
 
