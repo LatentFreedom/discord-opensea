@@ -11,7 +11,7 @@ let data = {};
 
 client.on('ready', () => {
     console.log('Opensea Tracker Running...');
-    createCommands();
+    createCommandsForGuilds();
     getJsonData();
     client.user.setActivity(`OpenSea`, {type: 3});
 });
@@ -19,7 +19,6 @@ client.on('ready', () => {
 const getJsonData = () => {
     let rawdata = fs.readFileSync('collectioninfo.json');
     data = JSON.parse(rawdata);
-    console.log(data);
 }
 
 const saveJsonData = () => {
@@ -130,70 +129,79 @@ const styleBadCollectionMessage = (collection) => {
     return {embeds: [embed]};
 }
 
-const createCommands = () => {
-    const Guilds = client.guilds.cache.map(guild => guild.id);
-    // Add commands to all guilds
-    Guilds.forEach(guildId => {
-        const guild = client.guilds.cache.get(guildId);
-        let commands = guild.commands;
-        // Show Help
-        commands?.create({
-            name: "help",
-            description: "Show all the commands possible"
-        });
-        // Stats
-        commands?.create({
-            name: "stats",
-            description: "Show stats for given collection",
-            options: [
-                {
-                    name: "collection",
-                    description: "link name for the collection",
-                    required: true,
-                    type: Constants.ApplicationCommandOptionTypes.STRING
-                }
-            ]
-        });
-        // Supply
-        commands?.create({
-            name: "supply",
-            description: "Show total supply for given collection",
-            options: [
-                {
-                    name: "collection",
-                    description: "link name for the collection",
-                    required: true,
-                    type: Constants.ApplicationCommandOptionTypes.STRING
-                }
-            ]
-        });
-        // Floor
-        commands?.create({
-            name: "floor",
-            description: "Show floor price for given collection",
-            options: [
-                {
-                    name: "collection",
-                    description: "link name for the collection",
-                    required: true,
-                    type: Constants.ApplicationCommandOptionTypes.STRING
-                }
-            ]
-        });
-        // Owners
-        commands?.create({
-            name: "owners",
-            description: "Show total owners for given collection",
-            options: [
-                {
-                    name: "collection",
-                    description: "link name for the collection",
-                    required: true,
-                    type: Constants.ApplicationCommandOptionTypes.STRING
-                }
-            ]
-        });
+const createCommands = (guildId) => {
+    const guild = client.guilds.cache.get(guildId);
+    let commands = guild.commands;
+    // Show Help
+    commands?.create({
+        name: "help",
+        description: "Show all the commands possible"
     });
+    // Stats
+    commands?.create({
+        name: "stats",
+        description: "Show stats for given collection",
+        options: [
+            {
+                name: "collection",
+                description: "link name for the collection",
+                required: true,
+                type: Constants.ApplicationCommandOptionTypes.STRING
+            }
+        ]
+    });
+    // Supply
+    commands?.create({
+        name: "supply",
+        description: "Show total supply for given collection",
+        options: [
+            {
+                name: "collection",
+                description: "link name for the collection",
+                required: true,
+                type: Constants.ApplicationCommandOptionTypes.STRING
+            }
+        ]
+    });
+    // Floor
+    commands?.create({
+        name: "floor",
+        description: "Show floor price for given collection",
+        options: [
+            {
+                name: "collection",
+                description: "link name for the collection",
+                required: true,
+                type: Constants.ApplicationCommandOptionTypes.STRING
+            }
+        ]
+    });
+    // Owners
+    commands?.create({
+        name: "owners",
+        description: "Show total owners for given collection",
+        options: [
+            {
+                name: "collection",
+                description: "link name for the collection",
+                required: true,
+                type: Constants.ApplicationCommandOptionTypes.STRING
+            }
+        ]
+    });
+}
+
+const createCommandsForGuilds = () => {
+    // Check if guild id set
+    if (process.env.GUILD_ID) {
+        createCommands(process.env.GUILD_ID);
+    } else {
+        const Guilds = client.guilds.cache.map(guild => guild.id);
+        // Add commands to all guilds
+        Guilds.forEach(guildId => {
+            createCommands(guildId);
+        });
+    }
 }
 
 client.on('interactionCreate', async (interaction) => {
@@ -216,7 +224,6 @@ client.on('interactionCreate', async (interaction) => {
             // Get collection stats
             const collection = options.getString('collection');
             const stats = await getCollection(collection);
-            console.log(stats);
             if (!stats) {
                 content = styleBadCollectionMessage();
             } else if (commandName === 'stats') {
