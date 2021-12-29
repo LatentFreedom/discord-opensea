@@ -1,0 +1,91 @@
+{
+	"collections": [
+		{
+			"name": "sneaky-vampire-syndicate",
+			"stats": {
+				"stats": {
+					"one_day_volume": 34.0604,
+					"one_day_change": 1.739075190993164,
+					"one_day_sales": 47,
+					"one_day_average_price": 0.7246893617021277,
+					"seven_day_volume": 93.07260000000001,
+					"seven_day_change": -0.5196906305680112,
+					"seven_day_sales": 124,
+					"seven_day_average_price": 0.7505854838709678,
+					"thirty_day_volume": 594.2171613633208,
+					"thirty_day_change": -0.14002071247979414,
+					"thirty_day_sales": 685,
+					"thirty_day_average_price": 0.8674703085595924,
+					"total_volume": 19494.590665278603,
+					"total_sales": 13246,
+					"total_supply": 8888,
+					"count": 8888,
+					"num_owners": 1580,
+					"average_price": 1.4717341586349542,
+					"num_reports": 11,
+					"market_cap": 6671.203780645162,
+					"floor_price": 0.7877
+				}
+			},
+			"timestamp": 1640750108344
+		},
+		{
+			"name": "official-surreals",
+			"stats": {
+				"stats": {
+					"one_day_volume": 1.2640000000000005,
+					"one_day_change": 1.9124423963133654,
+					"one_day_sales": 26,
+					"one_day_average_price": 0.04861538461538463,
+					"seven_day_volume": 6.016899899999997,
+					"seven_day_change": 0.020245849936413495,
+					"seven_day_sales": 117,
+					"seven_day_average_price": 0.05142649487179484,
+					"thirty_day_volume": 35.28289890000002,
+					"thirty_day_change": -0.5223833916512154,
+					"thirty_day_sales": 513,
+					"thirty_day_average_price": 0.06877758070175442,
+					"total_volume": 4048.5331458420924,
+					"total_sales": 11656,
+					"total_supply": 9999,
+					"count": 9999,
+					"num_owners": 5056,
+					"average_price": 0.3473346899315453,
+					"num_reports": 11,
+					"market_cap": 514.2135222230767,
+					"floor_price": 0.03
+				}
+			},
+			"timestamp": 1640750213333
+		},
+		{
+			"name": "official-whales-game",
+			"stats": {
+				"stats": {
+					"one_day_volume": 0.0069,
+					"one_day_change": -0.9847387480600104,
+					"one_day_sales": 9,
+					"one_day_average_price": 0.000766666666666667,
+					"seven_day_volume": 1.3977900000000003,
+					"seven_day_change": -0.7836440493158058,
+					"seven_day_sales": 98,
+					"seven_day_average_price": 0.014273367346938775,
+					"thirty_day_volume": 709.6479827585606,
+					"thirty_day_change": -0.128174310299115,
+					"thirty_day_sales": 7704,
+					"thirty_day_average_price": 0.09042675903477994,
+					"total_volume": 1523.6271888565157,
+					"total_sales": 11513,
+					"total_supply": 23471,
+					"count": 23471,
+					"num_owners": 3667,
+					"average_price": 0.13233980620659275,
+					"num_reports": 3,
+					"market_cap": 335.010205,
+					"floor_price": 0.004
+				}
+			},
+			"timestamp": 1640746129062
+		}
+	]
+}
