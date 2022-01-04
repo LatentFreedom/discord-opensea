@@ -41,12 +41,21 @@ const getCollection = async (collection) => {
 }
 
 const setCollection = (collection, stats) => {
+    let newCollection = true;
     for (const [i, c] of Object.entries(data.collections)) {
         if (collection == c.name) {
-            data.collections[i].stats = stats;
+            data.collections[i].stats = stats.stats;
             data.collections[i].timestamp = Date.now();
+            newCollection = false;
         }
     };
+    if (newCollection) {
+        data.collections.push({
+            name: collection,
+            stats: stats.stats,
+            timestamp: Date.now()
+        });
+    }
     saveJsonData();
 }
 
